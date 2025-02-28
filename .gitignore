@@ -1,0 +1,31 @@
+# Node.js bağımlılıkları
+/node_modules
+/backend/node_modules
+/frontend/node_modules
+/.pnp
+.pnp.js
+
+# Derlenmiş dosyalar
+/build
+/dist
+/frontend/build
+/backend/build
+
+# Çevresel değişkenler
+/.env
+/backend/.env
+/frontend/.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Log ve önbellek dosyaları
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.DS_Store
+
+# Test ve coverage
+/coverage
