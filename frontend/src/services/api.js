@@ -12,6 +12,6 @@ export const fetchCustomers = async (updatedAtMin) => {
         return response.data.data.customers.edges.map(edge => edge.node);
     } catch (error) {
         console.error("❌ Müşteri verileri alınamadı:", error);
-        throw error; // Hata yakalanırsa, component'e iletilsin
+        throw error;
     }
 };
