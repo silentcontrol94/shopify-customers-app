@@ -60,3 +60,6 @@ app.post("/customers", async (req, res) => {
   }
 });
 
+app.listen(port, () => {
+  console.log(`🚀 Server ${port} portunda çalışıyor!`);
+});
