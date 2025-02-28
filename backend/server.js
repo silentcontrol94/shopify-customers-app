@@ -12,6 +12,14 @@ app.use(express.json());
 const SHOPIFY_STORE_URL = process.env.SHOPIFY_STORE_URL;
 const SHOPIFY_ACCESS_TOKEN = process.env.SHOPIFY_ACCESS_TOKEN;
 
+app.get("/", (req, res) => {
+  res.send("Shopify Customers API is running!");
+});
+
+app.get("/favicon.ico", (req, res) => {
+  res.status(204);
+});
+
 app.post("/customers", async (req, res) => {
   let { updated_at_min } = req.body; 
   if (!updated_at_min) {
@@ -32,22 +40,21 @@ app.post("/customers", async (req, res) => {
       }
     }`;
 
-    try {
-      const response = await axios.post(
-        `https://${SHOPIFY_STORE_URL}/admin/api/2023-10/graphql.json`,
-        { query },
-        {
-          headers: {
-            "X-Shopify-Access-Token": SHOPIFY_ACCESS_TOKEN,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      res.json(response.data);
-    } catch (error) {
-      res.status(500).json({ error: "Müşteri verileri alınamadı", details: error.message });
-    }
+  try {
+    const response = await axios.post(
+      `https://${SHOPIFY_STORE_URL}/admin/api/2023-10/graphql.json`,
+      { query },
+      {
+        headers: {
+          "X-Shopify-Access-Token": SHOPIFY_ACCESS_TOKEN,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: "Müşteri verileri alınamadı", details: error.message });
+  }
 });
 
 app.listen(port, () => {
