@@ -13,18 +13,14 @@ app.use(express.json());
 const SHOPIFY_STORE_URL = process.env.SHOPIFY_STORE_URL;
 const SHOPIFY_ACCESS_TOKEN = process.env.SHOPIFY_ACCESS_TOKEN;
 
-app.get("/", (req, res) => {
-  res.send("Shopify Customers API is running!");
-});
-
 app.get("/favicon.ico", (req, res) => {
   res.status(204);
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public', 'build')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'public', 'build', 'index.html'));
 });
 
 app.post("/customers", async (req, res) => {
