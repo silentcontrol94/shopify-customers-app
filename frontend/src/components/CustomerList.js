@@ -18,7 +18,7 @@ const CustomerList = () => {
         const data = await fetchCustomers(filterDate);
         setCustomers(data);
       } catch (error) {
-        console.error("❌ Müşteri verileri yüklenirken hata oluştu:", error);
+        console.error("Müşteri verileri yüklenirken hata oluştu:", error);
       } finally {
         setLoading(false);
       }
